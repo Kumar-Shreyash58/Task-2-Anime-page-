@@ -1,0 +1,152 @@
+/* Remove default spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+
+/* Header */
+header {
+    background-color: #222;
+    color: white;
+
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Header link */
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Main content */
+main {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 30px auto;
+}
+
+
+/* Headings */
+h2 {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin: 15px 0;
+}
+
+
+/* Anime container */
+#anime-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* Anime card */
+.anime-card {
+    background-color: white;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Anime image */
+.anime-card img {
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* Card title */
+.anime-card h3 {
+    margin-top: 10px;
+}
+
+
+/* Card link */
+.anime-card a {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: blue;
+
+    text-decoration: none;
+}
+
+
+/* Detail page image */
+#anime-image {
+    width: 250px;
+    max-width: 100%;
+
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Detail information */
+main p {
+    margin: 10px 0;
+
+    line-height: 1.5;
+}
+
+
+/* Original URL button */
+#anime-url {
+    display: inline-block;
+
+    background-color: #222;
+    color: white;
+
+    padding: 10px 15px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+}
+
+
+/* Mobile screen */
+@media (max-width: 700px) {
+
+    #anime-container {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

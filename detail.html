@@ -2,103 +2,224 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Anime Details | AnimeVerse</title>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    <!-- Responsive design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Anime Details</title>
-
-    <!-- Connect CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Header -->
     <header>
-        <h1>Anime Explorer</h1>
 
-        <!-- Back to home -->
-        <a href="index.html">Home</a>
+        <h1>
+            AnimeVerse
+        </h1>
+
+        <a href="index.html">
+            ← Home
+        </a>
+
     </header>
 
+    <main class="detail-page">
 
-    <!-- Main Content -->
-    <main>
+        <p
+            id="detail-loading"
+            class="detail-loading"
+        >
+            Loading anime details...
+        </p>
 
-        <h2>Anime Details</h2>
-
-        <!-- Anime poster -->
-        <img
-            id="anime-image"
-            src="https://via.placeholder.com/250x350"
-            alt="Anime Poster"
+        <section
+            id="detail-container"
+            class="detail-container"
         >
 
-        <!-- Anime information -->
-        <h3 id="anime-title">Anime Title</h3>
+            <div class="detail-poster">
 
-        <p>
-            <strong>Released Year:</strong>
-            <span id="anime-year">2024</span>
-        </p>
+                <img
+                    id="anime-image"
+                    src=""
+                    alt="Anime Poster"
+                >
 
-        <p>
-            <strong>Producer:</strong>
-            <span id="anime-producer">Example Producer</span>
-        </p>
+            </div>
 
-        <p>
-            <strong>Duration:</strong>
-            <span id="anime-duration">24 minutes</span>
-        </p>
+            <div class="detail-content">
 
-        <p>
-            <strong>Rating:</strong>
-            <span id="anime-rating">PG-13</span>
-        </p>
+                <p class="detail-label">
+                    ANIME DETAILS
+                </p>
 
-        <p>
-            <strong>Rank:</strong>
-            <span id="anime-rank">10</span>
-        </p>
+                <h2 id="anime-title">
+                    Loading...
+                </h2>
 
-        <h3>Synopsis</h3>
+                <div class="detail-tags">
 
-        <p id="anime-synopsis">
-            This is where the complete anime synopsis will appear.
-        </p>
+                    <span id="anime-type">
+                        TV
+                    </span>
 
-        <p>
-            <strong>Background:</strong>
-        </p>
+                    <span id="anime-episodes">
+                        Episodes: --
+                    </span>
 
-        <p id="anime-background">
-            Background information will appear here.
-        </p>
+                    <span class="hd-tag">
+                        HD
+                    </span>
 
-        <p>
-            <strong>Themes:</strong>
-            <span id="anime-themes">Action, Adventure</span>
-        </p>
+                    <span
+                        class="score-tag"
+                        id="anime-score"
+                    >
+                        ★ --
+                    </span>
 
-        <br>
+                </div>
 
-        <!-- Original anime URL -->
-        <a
-            id="anime-url"
-            href="https://myanimelist.net/"
-            target="_blank"
-        >
-            View Original Anime Page
-        </a>
+                <div class="detail-meta">
+
+                    <div>
+
+                        <span>
+                            Released
+                        </span>
+
+                        <strong id="anime-year">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Duration
+                        </span>
+
+                        <strong id="anime-duration">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Rating
+                        </span>
+
+                        <strong id="anime-rating">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Rank
+                        </span>
+
+                        <strong id="anime-rank">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span>
+                        Producer
+                    </span>
+
+                    <strong id="anime-producer">
+                        --
+                    </strong>
+
+                </div>
+
+
+        
+
+                <div class="detail-row">
+
+                    <span>
+                        Themes
+                    </span>
+
+                    <strong id="anime-themes">
+                        --
+                    </strong>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>
+                        Synopsis
+                    </h3>
+
+                    <p id="anime-synopsis">
+                        Loading...
+                    </p>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>
+                        Background
+                    </h3>
+
+                    <p id="anime-background">
+                        Loading...
+                    </p>
+
+                </div>
+
+                <div class="detail-buttons">
+
+                    <a
+                        id="anime-url"
+                        href="#"
+                        target="_blank"
+                        class="watch-button"
+                    >
+                        View Original Page ↗
+                    </a>
+
+
+                    <a
+                        href="index.html"
+                        class="back-button"
+                    >
+                        ← Back
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
 
     </main>
 
 
-    <!-- JavaScript will be connected later -->
-    <script src="script.js"></script>
+    <script src="detail.js"></script>
 
 </body>
 

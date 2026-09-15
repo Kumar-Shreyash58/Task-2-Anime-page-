@@ -1,156 +1,114 @@
-// Some simple anime data
-// Jikan API URL
 const API_URL = "https://api.jikan.moe/v4/anime";
-
-
-// Find the anime container
 const container = document.getElementById("anime-container");
 
-
-// Fetch anime data from API
+const loading = document.getElementById("loading");
 async function getAnime() {
 
     try {
 
-        // Send request to API
         const response = await fetch(API_URL);
+        if (!response.ok) {
 
-        // Convert response into JavaScript object
+            throw new Error(
+                "API Error: " + response.status
+            );
+
+        }
+
         const data = await response.json();
 
-        // Return anime data
+        console.log("Jikan API response:", data);
+
         return data.data;
 
-    } catch (error) {
+    }
 
-        console.log("Error fetching anime:", error);
+    catch (error) {
+
+        console.error(
+            "Jikan API Error:",
+            error
+        );
+
+        loading.textContent =
+            "Unable to load anime.";
+
+        return [];
 
     }
 }
-async function displayAnime() {
 
-    // Get anime from API
-    const animeList = await getAnime();
+function displayAnime(animeList) {
 
-    // Check if data was received
-    if (!animeList) {
-        return;
-    }
-
+    container.innerHTML = "";
 
     animeList.forEach(function(anime) {
+        
+        const card =
+            document.createElement("div");
+        
+        card.className =
+            "anime-card";
 
-        // Create a card
-        const card = document.createElement("div");
-
-        // Add CSS class
-        card.className = "anime-card";
-
-
-        // Put anime information inside card
         card.innerHTML = `
-            <img 
-                src="${anime.images.jpg.image_url}"
+
+            <img
+                src="${anime.images.jpg.large_image_url}"
                 alt="${anime.title}"
             >
 
-            <h3>${anime.title}</h3>
+            <h3>
+                ${anime.title}
+            </h3>
 
             <p>
-                Year: ${anime.year || "N/A"}
+                Released:
+                ${anime.year || "N/A"}
             </p>
 
-            <a href="detail.html?id=${anime.mal_id}">
+            <p>
+                Score:
+                ${anime.score || "N/A"}
+            </p>
+
+            <a
+                href="detail.html?id=${anime.mal_id}"
+            >
                 View Details
             </a>
+
         `;
 
 
-        // Add card to webpage
+        // Add card to page
         container.appendChild(card);
+
     });
+
 }
 
+async function loadAnime() {
 
-// Call the function
-displayAnime();
-
-
-// Display anime on the home page
-if (container) {
-
-    animeList.forEach(function(anime) {
-
-        // Create a new card
-        const card = document.createElement("div");
-
-        // Give the card a CSS class
-        card.className = "anime-card";
-
-        // Add HTML inside the card
-        card.innerHTML = `
-            <img src="${anime.image}" alt="${anime.title}">
-
-            <h3>${anime.title}</h3>
-
-            <p>Year: ${anime.year}</p>
-
-            <a href="detail.html?title=${encodeURIComponent(anime.title)}">
-                View Details
-            </a>
-        `;
-
-        // Add the card to the page
-        container.appendChild(card);
-    });
-}
+    loading.textContent =
+        "Loading anime...";
 
 
-// Get anime title from the URL
-const urlParams = new URLSearchParams(window.location.search);
+    const animeList =
+        await getAnime();
+    if (animeList.length === 0) {
 
-const animeTitle = urlParams.get("title");
+        return;
 
-
-// Show details on detail.html
-if (animeTitle) {
-
-    // Find the selected anime
-    const selectedAnime = animeList.find(function(anime) {
-        return anime.title === animeTitle;
-    });
-
-
-    if (selectedAnime) {
-
-        document.getElementById("anime-image").src =
-            selectedAnime.image;
-
-        document.getElementById("anime-title").textContent =
-            selectedAnime.title;
-
-        document.getElementById("anime-year").textContent =
-            selectedAnime.year;
-
-        document.getElementById("anime-producer").textContent =
-            selectedAnime.producer;
-
-        document.getElementById("anime-duration").textContent =
-            selectedAnime.duration;
-
-        document.getElementById("anime-rating").textContent =
-            selectedAnime.rating;
-
-        document.getElementById("anime-rank").textContent =
-            selectedAnime.rank;
-
-        document.getElementById("anime-synopsis").textContent =
-            selectedAnime.synopsis;
-
-        document.getElementById("anime-background").textContent =
-            selectedAnime.background;
-
-        document.getElementById("anime-themes").textContent =
-            selectedAnime.themes;
     }
+
+
+    loading.style.display =
+        "none";
+
+
+    
+    displayAnime(animeList);
+
 }
+
+loadAnime();
